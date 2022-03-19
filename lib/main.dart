@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'quizpage.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Myapp(),
+    home: Quizpage(),
     debugShowCheckedModeBanner: false,
   ));
 }
