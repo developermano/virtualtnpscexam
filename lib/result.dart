@@ -19,7 +19,7 @@ class _ResultpageState extends State<Resultpage> {
             children: [
               ListTile(
                 title: Text("score:"),
-                trailing: Text("10"),   
+                trailing: Text("10"),
               ),
               ListTile(
                 title: Text("total questions:"),
@@ -35,7 +35,10 @@ class _ResultpageState extends State<Resultpage> {
                   ElevatedButton(onPressed: () {}, child: Text("retry")),
                   ElevatedButton(onPressed: () {}, child: Text("home")),
                 ],
-              )
+              ),
+              ElevatedButton(
+                  onPressed: () {}, child: Text("check leaderboard")),
+              ElevatedButton(onPressed: () {}, child: Text("show answers")),
             ],
           ),
         ),
