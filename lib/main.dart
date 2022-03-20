@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:virtualtnpscexam/result.dart';
 import 'quizpage.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Quizpage(),
+    home: Resultpage(),
     debugShowCheckedModeBanner: false,
   ));
 }
