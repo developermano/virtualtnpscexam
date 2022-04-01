@@ -50,76 +50,78 @@ class _QuizpageState extends State<Quizpage> {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
         ),
-        body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          color: Colors.black,
-          child: Column(
-            children: [
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 10,
-                margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-                child: Card(
-                  child: Center(child: Text(widget.que[index].question)),
-                ),
-              ),
-              Divider(
-                height: MediaQuery.of(context).size.height / 10,
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 10,
-                margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    answered(0);
-                  },
+        body: SafeArea(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: Colors.black,
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 10,
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
                   child: Card(
-                    child: Center(child: Text(widget.que[index].answer[0])),
+                    child: Center(child: Text(widget.que[index].question)),
                   ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 10,
-                margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    answered(1);
-                  },
-                  child: Card(
-                    child: Center(child: Text(widget.que[index].answer[1])),
+                Divider(
+                  height: MediaQuery.of(context).size.height / 10,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 10,
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      answered(0);
+                    },
+                    child: Card(
+                      child: Center(child: Text(widget.que[index].answer[0])),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 10,
-                margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    answered(2);
-                  },
-                  child: Card(
-                    child: Center(child: Text(widget.que[index].answer[2])),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 10,
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      answered(1);
+                    },
+                    child: Card(
+                      child: Center(child: Text(widget.que[index].answer[1])),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 10,
-                margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    answered(3);
-                  },
-                  child: Card(
-                    child: Center(child: Text(widget.que[index].answer[3])),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 10,
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      answered(2);
+                    },
+                    child: Card(
+                      child: Center(child: Text(widget.que[index].answer[2])),
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 10,
+                  margin: EdgeInsets.symmetric(horizontal: 6, vertical: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      answered(3);
+                    },
+                    child: Card(
+                      child: Center(child: Text(widget.que[index].answer[3])),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ));
   }
