@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:virtualtnpscexam/main.dart';
 import 'package:virtualtnpscexam/quizmodel.dart';
 
@@ -14,6 +15,44 @@ class Resultpage extends StatefulWidget {
 }
 
 class _ResultpageState extends State<Resultpage> {
+  late BannerAd myBanner;
+  bool isloaded = false;
+
+  //appid="ca-app-pub-6812988945725571~6079621755";
+  //adid1="ca-app-pub-6812988945725571/7729451637";
+  //adid2="ca-app-pub-6812988945725571/2992764739";
+  //adid3="ca-app-pub-6812988945725571/1679683064";
+
+  void initState() {
+    super.initState();
+    myBanner = BannerAd(
+      adUnitId: "ca-app-pub-6812988945725571/7729451637",
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(onAdLoaded: (_) {
+        setState(() {
+          isloaded = true;
+        });
+      }, onAdFailedToLoad: (_, error) {
+        print(error);
+      }),
+    );
+
+    myBanner.load();
+  }
+
+  Widget ad() {
+    if (isloaded == true) {
+      return Container(
+          alignment: Alignment.center,
+          child: AdWidget(ad: myBanner),
+          width: myBanner.size.width.toDouble(),
+          height: myBanner.size.height.toDouble());
+    } else {
+      return Text('ad');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +124,9 @@ class _ResultpageState extends State<Resultpage> {
                         },
                         child: Text("show answers")),
                   ],
+                ),
+                Row(
+                  children: [ad()],
                 )
               ],
             ),

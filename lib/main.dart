@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -7,6 +8,8 @@ import 'package:virtualtnpscexam/result.dart';
 import 'quizpage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
   runApp(MaterialApp(
     home: Myapp(),
     debugShowCheckedModeBanner: false,
@@ -20,6 +23,44 @@ class Myapp extends StatefulWidget {
 
 class _MyappState extends State<Myapp> {
   List<Quizmodel> quizdata = [];
+
+  late BannerAd myBanner;
+  bool isloaded = false;
+
+  //appid="ca-app-pub-6812988945725571~6079621755";
+  //adid1="ca-app-pub-6812988945725571/7729451637";
+  //adid2="ca-app-pub-6812988945725571/2992764739";
+  //adid3="ca-app-pub-6812988945725571/1679683064";
+
+  void initState() {
+    super.initState();
+    myBanner = BannerAd(
+      adUnitId: "ca-app-pub-6812988945725571/7729451637",
+      size: AdSize.banner,
+      request: AdRequest(),
+      listener: BannerAdListener(onAdLoaded: (_) {
+        setState(() {
+          isloaded = true;
+        });
+      }, onAdFailedToLoad: (_, error) {
+        print(error);
+      }),
+    );
+
+    myBanner.load();
+  }
+
+  Widget ad() {
+    if (isloaded == true) {
+      return Container(
+          alignment: Alignment.center,
+          child: AdWidget(ad: myBanner),
+          width: myBanner.size.width.toDouble(),
+          height: myBanner.size.height.toDouble());
+    } else {
+      return Text('ad');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,6 +182,7 @@ class _MyappState extends State<Myapp> {
                   ),
                 ),
               ),
+              ad()
             ],
           ),
         ));
